@@ -1,0 +1,1469 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 300;
+  src: url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Light.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Light.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Light.woff") format("woff"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 400;
+  src: url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Regular.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Regular.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Regular.woff") format("woff"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 700;
+  src: url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Bold.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Bold.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Bold.woff") format("woff"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 800;
+  src: url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-ExtraBold.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-ExtraBold.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-ExtraBold.woff") format("woff"), url("//openimage.interpark.com/.fonts/NanumGothic/2350.abv2/hinted/NanumGothic-ExtraBold.otf") format("opentype");
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  font-family: "Nanum Gothic", "돋움", Dotum, Arial, Helvetica, sans-serif;
+}
+
+textarea,
+input,
+button {
+  font-family: "Nanum Gothic", "돋움", Dotum, Arial, Helvetica, sans-serif;
+}
+
+button {
+  outline: none;
+}
+
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-align-content: stretch;
+  align-content: stretch;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.container > .row {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+
+.container > .row.chatScreen {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: #e8ecef;
+}
+
+.chatHeaderWrapper {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.chatHeaderWrapper .titleWrap {
+  height: 50px;
+}
+
+.chatHeaderWrapper .titleWrap h1 {
+  padding: 12px 20px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.chatHeaderWrapper .closeWrap {
+  position: absolute;
+  top: 0;
+  right: 8px;
+}
+
+.chatHeaderWrapper .closeWrap button {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background: transparent url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_close.png") no-repeat 50% 50%;
+}
+
+.chatHeaderWrapper .closeWrap button span {
+  font-size: 0;
+  overflow: hidden;
+}
+
+.chatHeaderWrapper .closeWrap button:active {
+  background-color: #f9f9f9;
+}
+
+.chatPrev .prevButton {
+  display: block;
+  width: 100%;
+  height: 32px;
+  padding: 0;
+  font-size: 12px;
+  background-color: #f3f5f7;
+  border: 0;
+}
+
+.chatPrev .prevButton span {
+  padding-left: 19px;
+  background: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_prev.png") no-repeat 0 50%;
+}
+
+.chatPrev .prevButton:active {
+  background-color: #f9f9f9;
+}
+
+.screenWrapper .stream {
+  box-sizing: border-box;
+  padding: 0 20px;
+  overflow-x: hidden;
+}
+
+.screenWrapper .stream .date + .msg {
+  margin-top: 0;
+}
+
+.screenWrapper .stream > .msg {
+  margin-top: 15px;
+}
+
+.screenWrapper .date {
+  clear: both;
+  position: relative;
+  padding: 20px 0;
+  overflow: hidden;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+}
+
+.screenWrapper .date::before, .screenWrapper .date::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: block;
+  width: 50%;
+  height: 0;
+  margin: auto 0;
+  border-bottom: 1px dashed #555;
+}
+
+.screenWrapper .date::before {
+  left: -68px;
+}
+
+.screenWrapper .date::after {
+  right: -68px;
+}
+
+.screenWrapper .msg {
+  clear: both;
+  float: left;
+  position: relative;
+  margin: 5px 0;
+  width: 100%;
+  min-height: 42px;
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.screenWrapper .msg .profile {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 46px;
+  height: 46px;
+}
+
+.screenWrapper .msg .profile img {
+  display: block;
+  width: 100%;
+}
+
+.screenWrapper .msg .msgWrap {
+  position: relative;
+  float: left;
+  max-width: calc(85% - 56px);
+  margin-left: 56px;
+  clear: both;
+}
+
+.screenWrapper .msg .msgWrap + .msgWrap {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .msgWrap + .reserveList {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .msgWrap + .qaList {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .msgWrap.product {
+  max-width: 278px;
+}
+
+.screenWrapper .msg .msgWrap.product .img + .text {
+  padding-top: 0;
+}
+
+.screenWrapper .msg .msgWrap.product .img a {
+  border-radius: 0;
+}
+
+.screenWrapper .msg .msgWrap.product .img a img {
+  width: 100%;
+  max-width: inherit;
+}
+
+.screenWrapper .msg .chatWrap {
+  position: relative;
+  background-color: #fff;
+  border-radius: 6px;
+  border-top-left-radius: 0;
+  box-shadow: 0 1px 0 #d5dbe0;
+}
+
+.screenWrapper .msg .chatWrap + .chatWrap {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .chatWrap + .reserveList {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .chatWrap::before, .screenWrapper .msg .chatWrap::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: -8px;
+  right: auto;
+  width: 10px;
+  height: 0;
+  border: 8px solid #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom: 0;
+}
+
+.screenWrapper .msg .chatWrap::after {
+  left: -9px;
+  border-top-color: #d5dbe0;
+  z-index: 1;
+}
+
+.screenWrapper .msg .chatWrap .text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 11px 14px;
+  word-wrap: break-word;
+  white-space: pre-line;
+  font-family: "Nanum Gothic", "돋움", Dotum, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  color: #333;
+}
+
+.screenWrapper .msg .chatWrap .text .title {
+  display: block;
+  padding-bottom: .8rem;
+  margin-bottom: .8rem;
+  border-bottom: .1rem solid #fff;
+}
+
+.screenWrapper .msg .chatWrap .text .point {
+  color: #f75c52;
+}
+
+.screenWrapper .msg .chatWrap .text a {
+  color: #fff;
+}
+
+.screenWrapper .msg .chatWrap .img {
+  display: block;
+  padding: 10px;
+}
+
+.screenWrapper .msg .chatWrap .img a {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.screenWrapper .msg .chatWrap .img a img {
+  display: block;
+  max-width: 125px;
+  height: auto;
+}
+
+.screenWrapper .msg .chatWrap .button {
+  display: block;
+  width: 100%;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 0 0 6px 6px;
+  border-top: 1px solid #eaeaea;
+  background-color: transparent;
+  font-size: 13px;
+  color: #f75c52;
+}
+
+.screenWrapper .msg .chatWrap .button[disabled] {
+  color: #888;
+}
+
+.screenWrapper .msg .chatWrap .button:active {
+  background-color: #f9f9f9;
+}
+
+.screenWrapper .msg .chatWrap .progress {
+  text-align: center;
+  padding-bottom: 11px;
+}
+
+.container.ie9 .screenWrapper .msg .chatWrap .progress .icons {
+  display: none;
+}
+
+.container.ie9 .screenWrapper .msg .chatWrap .progress .loading {
+  display: block;
+  margin: 0 auto;
+}
+
+.screenWrapper .msg .chatWrap .progress .icons {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #969696;
+}
+
+.screenWrapper .msg .chatWrap .progress .icons + .icons {
+  margin-left: 3px;
+}
+
+.screenWrapper .msg .chatWrap .progress .icons:nth-child(1) {
+  -webkit-animation: progress 1s infinite -.32s;
+  animation: progress 1s infinite -.32s;
+}
+
+.screenWrapper .msg .chatWrap .progress .icons:nth-child(2) {
+  -webkit-animation: progress 1s infinite -.16s;
+  animation: progress 1s infinite -.16s;
+}
+
+.screenWrapper .msg .chatWrap .progress .icons:nth-child(3) {
+  -webkit-animation: progress 1s infinite;
+  animation: progress 1s infinite;
+}
+
+.screenWrapper .msg .chatWrap .progress .loading {
+  display: none;
+}
+
+.screenWrapper .msg .emoticon img {
+  display: block;
+  max-width: 100px;
+  height: auto;
+}
+
+.screenWrapper .msg time {
+  position: absolute;
+  bottom: -3px;
+  left: calc(100% + 10px);
+  right: auto;
+  font-size: 11px;
+  white-space: nowrap;
+  color: #888;
+}
+
+.screenWrapper .msg.butler + .mine {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg.mine {
+  float: right;
+}
+
+.screenWrapper .msg.mine .msgWrap {
+  float: right;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.screenWrapper .msg.mine .chatWrap {
+  background: #4680fe;
+  border-radius: 6px;
+  border-top-right-radius: 0;
+  box-shadow: none;
+}
+
+.screenWrapper .msg.mine .chatWrap::before {
+  left: auto;
+  right: -8px;
+  border-top-color: #4680fe;
+}
+
+.screenWrapper .msg.mine .chatWrap::after {
+  display: none;
+}
+
+.screenWrapper .msg.mine .chatWrap .text {
+  box-shadow: none;
+  color: #fff;
+}
+
+.screenWrapper .msg.mine time {
+  right: calc(100% + 10px);
+  left: auto;
+}
+
+.screenWrapper .msg.mine + .butler {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .reserveList {
+  float: left;
+  margin-left: 56px;
+  white-space: normal;
+}
+
+.screenWrapper .msg .reserveList + .mine {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .reserveList .section {
+  position: relative;
+  overflow: hidden;
+}
+
+.screenWrapper .msg .reserveList .section + .section {
+  margin-top: 10px;
+}
+
+.screenWrapper .msg .reserveList .section::before, .screenWrapper .msg .reserveList .section::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 18px;
+  height: 18px;
+  z-index: 2;
+  border-radius: 50%;
+  border: 8px solid #fff;
+}
+
+.screenWrapper .msg .reserveList .section::before {
+  top: -18px;
+  left: calc(84% - 17px);
+}
+
+.screenWrapper .msg .reserveList .section::after {
+  bottom: -18px;
+  left: calc(84% - 17px);
+  box-shadow: inset 0 1px 0 #d5dbe0;
+}
+
+.screenWrapper .msg .reserveList .section .contents {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.screenWrapper .msg .reserveList .section .contents > .col {
+  position: relative;
+  box-sizing: border-box;
+  display: table-cell;
+  height: 100%;
+  padding: 11px 0;
+  vertical-align: top;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.screenWrapper .msg .reserveList .section .contents > .col::before, .screenWrapper .msg .reserveList .section .contents > .col::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border: 11px solid #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-left-width: 16px;
+  border-right-width: 16px;
+}
+
+.screenWrapper .msg .reserveList .section .contents > .col::before {
+  top: 0;
+  border-top: 0;
+}
+
+.screenWrapper .msg .reserveList .section .contents > .col::after {
+  bottom: 0;
+  border-bottom: 0;
+}
+
+.screenWrapper .msg .reserveList .section .contents > .col:first-child {
+  width: 84%;
+  padding-left: 15px;
+  padding-right: 8px;
+  border-radius: 6px 20px 20px 6px;
+  border-right: 1px solid #eaeaea;
+}
+
+.screenWrapper .msg .reserveList .section .contents > .col:last-child {
+  border-radius: 20px 6px 6px 20px;
+  vertical-align: middle;
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo {
+  position: relative;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .col {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .col:first-child {
+  width: 50px;
+  padding-right: 12px;
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.overseasAir {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasAir_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.overseasHotel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasHotel_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.overseasTravel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasTravel_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.domesticAir {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticAir_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.domesticStay {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticStay_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.domesticTravel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticTravel_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.airHotel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.airHotel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.jeju {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_jeju_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.useTicket {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_useTicket_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .icons.etc {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_etc_on.png");
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .stateWrap {
+  font-size: 13px;
+  padding-bottom: 4px;
+  color: #666;
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .stateWrap .state {
+  font-weight: 700;
+  color: #f75c52;
+}
+
+.screenWrapper .msg .reserveList .section .prodInfo .title {
+  display: -webkit-box;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 38px;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.screenWrapper .msg .reserveList .section .etcInfo dl {
+  position: relative;
+  font-size: 0;
+  line-height: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.screenWrapper .msg .reserveList .section .etcInfo dl dt {
+  font-size: 0;
+  display: none;
+}
+
+.screenWrapper .msg .reserveList .section .etcInfo dl dd {
+  position: relative;
+  display: inline-block;
+  font-size: 13px;
+  color: #666;
+}
+
+.screenWrapper .msg .reserveList .section .etcInfo dl dd + dt + dd {
+  margin-left: 9px;
+  padding-left: 9px;
+}
+
+.screenWrapper .msg .reserveList .section .etcInfo dl dd + dt + dd:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 1px;
+  height: 10px;
+  margin: auto 0;
+  background-color: #dbdbdb;
+}
+
+.screenWrapper .msg .reserveList .section .etcInfo dl.price dd {
+  font-weight: 700;
+}
+
+.screenWrapper .msg .reserveList .section .chatButton {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 20px 0;
+  background-color: transparent;
+  border: 0;
+  color: #f75c52;
+  vertical-align: middle;
+}
+
+.screenWrapper .msg .reserveList .section.cancel::before, .screenWrapper .msg .reserveList .section.cancel::after {
+  border-color: #f3f5f7;
+}
+
+.screenWrapper .msg .reserveList .section.cancel .contents > .col {
+  background-color: #f3f5f7;
+}
+
+.screenWrapper .msg .reserveList .section.cancel .contents > .col::before {
+  border-bottom-color: #f3f5f7;
+}
+
+.screenWrapper .msg .reserveList .section.cancel .contents > .col::after {
+  border-top-color: #f3f5f7;
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.overseasAir {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasAir_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.overseasHotel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasHotel_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.overseasTravel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasTravel_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.domesticAir {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticAir_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.domesticStay {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticStay_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.domesticTravel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticTravel_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.airHotel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.airHotel {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.jeju {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_jeju_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.useTicket {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_useTicket_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .icons.etc {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_etc_off.png");
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .stateWrap {
+  color: #666;
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .stateWrap .state {
+  color: #666;
+}
+
+.screenWrapper .msg .reserveList .section.cancel .prodInfo .title {
+  color: #666;
+}
+
+.screenWrapper .msg .reserveList .section.cancel .chatButton {
+  color: #666;
+  pointer-events: none;
+}
+
+.screenWrapper .msg .reserveList .allReserveBtn {
+  width: 100%;
+  height: 42px;
+  margin-top: 8px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #333;
+}
+
+.screenWrapper .msg .reserveList .allReserveBtn span {
+  padding-right: 12px;
+  background: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_arrow.png") no-repeat 100% 50%;
+}
+
+.screenWrapper .msg .reserveList .allReserveBtn:active {
+  border-color: #aaa;
+}
+
+.screenWrapper .msg.selectList {
+  max-width: 85%;
+}
+
+.screenWrapper .msg.selectList .qaSelectList {
+  float: left;
+  width: calc(100% - 56px);
+  margin-left: 56px;
+  box-shadow: 0 1px 0 0 #d5dbe0;
+  background-color: #fff;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li {
+  position: relative;
+  border: 1px solid #dedede;
+  border-bottom-color: #fff;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li + li {
+  margin-top: -1px;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li:first-child {
+  border-top-color: #fff;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li button {
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  text-align: left;
+  font-size: 13px;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li button span {
+  display: block;
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li button:active {
+  background-color: #f9f9f9;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li.talk button span {
+  padding-left: 33px;
+  background: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_talk.png") no-repeat 0 50%;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li.selected {
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-color: #4680fe;
+  z-index: 1;
+}
+
+.screenWrapper .msg.selectList .qaSelectList ul li.selected button {
+  color: #4680fe;
+}
+
+.screenWrapper .msg.selectList + .mine {
+  margin-top: 10px;
+}
+
+.inputsWrapper {
+  border-top: 1px solid #d5d6d8;
+  background-color: #fff;
+}
+
+.inputsWrapper .chatMenuWrapper {
+  position: relative;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 19px;
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .menu {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .menu + .menu {
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .menu + .menu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  margin: auto 0;
+  width: 1px;
+  height: 12px;
+  background-color: #ccc;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .menuSelectBtn {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_menu.png") no-repeat 0 50%;
+  background-size: auto 100%;
+  font-size: 12px;
+  color: #5c5c5c;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .menuSelectBtn span {
+  display: block;
+  padding: 3px 0 3px 27px;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .menuSelectBtn:active {
+  background-color: #f9f9f9;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .fileBtnWrap {
+  font-size: 0;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .fileBtnWrap input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  padding: 0;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  overflow: hidden;
+  font-size: 0;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .fileBtnWrap input[disabled] + label {
+  background-position: 0 -20px;
+  color: #c7c7c7;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .fileBtnWrap label {
+  display: block;
+  padding: 4px 0 4px 27px;
+  background: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_images.png") no-repeat 0 0;
+  font-size: 12px;
+  line-height: 1;
+  color: #5c5c5c;
+  vertical-align: top;
+}
+
+.inputsWrapper .chatMenuWrapper .menuImgUploadWrapper .fileBtnWrap label:active {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.inputsWrapper .chatMenuWrapper .chatInfoWrapper {
+  display: table-cell;
+  vertical-align: top;
+  font-size: 0;
+  text-align: right;
+}
+
+.inputsWrapper .chatMenuWrapper .chatInfoWrapper .closeInfoBtn {
+  display: inline-block;
+  width: 60px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_info.png") no-repeat 50% 50%;
+  font-size: 12px;
+  color: #5c5c5c;
+}
+
+.inputsWrapper .chatMenuWrapper .chatInfoWrapper .closeInfoBtn span {
+  font-size: 0;
+  overflow: hidden;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 47px;
+  z-index: 10;
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  display: none;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper.visible {
+  display: block;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper {
+  position: relative;
+  padding: 28px 20px 30px;
+  border: 1px solid #666;
+  background-color: #fff;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper:after, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -13px;
+  width: 0;
+  height: 0;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper:before {
+  border: 6px solid #666;
+  border-bottom-color: transparent;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper:after {
+  bottom: -10px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper h3 {
+  padding-bottom: 2px;
+  font-size: 14px;
+  color: #333;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap {
+  padding-bottom: 18px;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .point {
+  color: #1e90ff;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .point a {
+  color: #1e90ff;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap p {
+  font-size: 13px;
+  line-height: 20px;
+  color: #333;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap p + p {
+  margin-top: 5px;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap p + p a {
+  color: #1e90ff;
+  text-decoration: underline;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList {
+  overflow: hidden;
+  margin-top: -14px;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li {
+  float: left;
+  width: 25%;
+  padding-top: 14px;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li button {
+  position: relative;
+  display: block;
+  width: 50px;
+  margin: 0 auto;
+  padding: 50px 0 0;
+  background-color: transparent;
+  border: 0;
+  font-size: 13px;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li button::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: transparent;
+  background-size: 100%;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li button span {
+  display: block;
+  padding-top: 8px;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasAir button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasAir_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasAir button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasAir button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasAir button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasAir_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasHotel button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasHotel_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasHotel button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasHotel button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasHotel button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasHotel_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasTravel button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasTravel_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasTravel button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasTravel button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.overseasTravel button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_overseasTravel_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticAir button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticAir_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticAir button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticAir button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticAir button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticAir_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticStay button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticStay_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticStay button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticStay button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticStay button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticStay_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticTravel button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticTravel_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticTravel button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticTravel button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.domesticTravel button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_domesticTravel_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.airHotel button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_airHotel_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.jeju button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_jeju_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.jeju button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.jeju button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.jeju button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_jeju_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.useTicket button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_useTicket_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.useTicket button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.useTicket button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.useTicket button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_useTicket_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.etc button::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_etc_off.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.etc button:active::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.etc button:focus::before, .inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .infoWrap .cateList li.etc button:hover::before {
+  background-image: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_etc_on.png");
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .buttonWrap button {
+  display: block;
+  width: 100%;
+  height: 43px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .buttonWrap button:active {
+  border-color: #aaa;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper .innerWrapper .buttonWrap button.reserveListBtn span {
+  padding-left: 22px;
+  background: url("http://openimage.interpark.com/tourpark/tour_ui/butlerChat/icons_list.png") no-repeat 0 50%;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper.left .innerWrapper:before {
+  left: -1px;
+  border-right-color: transparent;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper.left .innerWrapper:after {
+  left: 0;
+  border-right-color: transparent;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper.right .innerWrapper:before {
+  right: -1px;
+  border-left-color: transparent;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper.right .innerWrapper:after {
+  right: 0;
+  border-left-color: transparent;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper.reserveList {
+  left: 20px;
+  padding-right: 94px;
+}
+
+.inputsWrapper .chatMenuWrapper .innerPopupWrapper.chatInfo {
+  right: 29px;
+  padding-left: 110px;
+}
+
+.inputsWrapper .chatInputsWrapper {
+  box-sizing: border-box;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.inputsWrapper .chatInputsWrapper .col {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.inputsWrapper .chatInputsWrapper .col:last-child {
+  padding-left: 9px;
+  width: 76px;
+}
+
+.inputsWrapper .chatInputsWrapper .chattingTalk {
+  display: block;
+  width: 100%;
+  height: 70px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  overflow-y: auto;
+  font-family: "Nanum Gothic", "돋움", Dotum, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  resize: none;
+  outline: none;
+}
+
+.inputsWrapper .chatInputsWrapper .chattingTalk[disabled] {
+  background-color: #e8ecef;
+}
+
+.inputsWrapper .chatInputsWrapper .chatSend {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 70px;
+  padding: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.inputsWrapper .chatInputsWrapper .chatSend[disabled] {
+  border-color: #d5d9dc;
+  background-color: #e8ecef;
+  color: #a4a8ab;
+  box-shadow: 0 2px 0 #dfe3e6;
+}
+
+.inputsWrapper .chatInputsWrapper[disabled] {
+  background-color: #e8ecef;
+}
+
+.dialogOverlay {
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.dialogWindow {
+  z-index: 11;
+  max-width: 300px;
+  background-color: #fff;
+  border: 1px solid #666;
+}
+
+.dialogWindow.inquiryLayer .dialogBodyOuter .dialogBody {
+  padding: 10px 0;
+}
+
+.dialogWindow .dialogHeaderOuter .dialogHeader {
+  padding: 9px 22px;
+  background-color: #666;
+  font-size: 12px;
+  color: #fff;
+}
+
+.dialogWindow .dialogBodyOuter {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.dialogWindow .dialogBodyOuter .dialogBody {
+  padding: 21px 0 19px;
+}
+
+.dialogWindow .dialogBodyOuter .dialogBody p {
+  font-size: 13px;
+  line-height: 20px;
+  color: #333;
+}
+
+.dialogWindow .dialogBodyOuter .dialogBody .textarea {
+  width: 258px;
+  border: 1px solid #dedede;
+}
+
+.dialogWindow .dialogBodyOuter .dialogBody .textarea textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 228px;
+  padding: 12px;
+  border: 0;
+  resize: none;
+  outline: none;
+  font-size: 13px;
+}
+
+.dialogWindow .dialogBodyOuter .dialogBody .counter {
+  margin-top: 2px;
+  font-size: 11px;
+  text-align: right;
+  color: #b4b4b4;
+}
+
+.dialogWindow .dialogButtonsOuter .dialogButtons {
+  font-size: 0;
+  text-align: center;
+}
+
+.dialogWindow .dialogButtonsOuter .dialogButtons button {
+  display: inline-block;
+  width: 50%;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid #dedede;
+  font-size: 12px;
+  color: #333;
+  outline: none;
+}
+
+.dialogWindow .dialogButtonsOuter .dialogButtons button:active {
+  background-color: #f9f9f9;
+}
+
+.dialogWindow .dialogButtonsOuter .dialogButtons button:first-child {
+  border-right: 1px solid #dedede;
+}
+
+.mainspinner {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  width: 7rem;
+  text-align: center;
+  margin-left: -3.5rem;
+  z-index: 9999;
+}
+
+.mainspinner > div {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: 0 .2rem;
+  display: inline-block;
+  background-color: #969696;
+  border-radius: 100%;
+  -webkit-animation: progress 1.4s infinite ease-in-out both;
+  animation: progress 1.4s infinite ease-in-out both;
+}
+
+.mainspinner .bounce1 {
+  -webkit-animation-delay: -.32s;
+  animation-delay: -.32s;
+}
+
+.mainspinner .bounce2 {
+  -webkit-animation-delay: -.16s;
+  animation-delay: -.16s;
+}
+
+@-webkit-keyframes progress {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: .2;
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes progress {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: .2;
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=../../../map/styles/pages/butlerChat/butlerChat.css.map */
