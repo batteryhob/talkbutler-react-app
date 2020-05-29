@@ -30,9 +30,9 @@ class ChatInput extends Component {
             if(this.state.inputValue.length > 1)
             {
                 socketModule.SendText(this.state.inputValue);
-                this.setState({
+                this.setState(state => ({
                     inputValue: ''
-                });
+                }));
             }
         }
     }
@@ -43,9 +43,9 @@ class ChatInput extends Component {
                 inputValue: e.target.value.substring(0, 1000)
             });
         }else{
-            this.setState({
+            this.setState(state => ({
                 inputValue: e.target.value
-            });
+            }));
         }
     }
 
@@ -54,9 +54,9 @@ class ChatInput extends Component {
         if(this.state.inputValue.length > 1)
         {
             socketModule.SendText(this.state.inputValue);
-            this.setState({
+            this.setState(state => ({
                 inputValue: ''
-            });
+            }));
         }
 
     }
