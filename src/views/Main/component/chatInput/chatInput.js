@@ -2,7 +2,9 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 
-import * as socketModule from '../../../../services/sockets'
+import {
+    pushPayload
+} from '../../../../redux/actions/payloadTypes'
 
 class ChatInput extends Component {
 
@@ -29,7 +31,9 @@ class ChatInput extends Component {
         if (e.key === "Enter" || e.keyCode === 13) {
             if(this.state.inputValue.length > 1)
             {
-                socketModule.SendText(this.state.inputValue);
+
+                this.props.PushPayload(this.state.inputValue)
+                //socketModule.SendText(this.state.inputValue);
                 this.setState(state => ({
                     inputValue: ''
                 }));
@@ -38,14 +42,15 @@ class ChatInput extends Component {
     }
 
     KeyCheck = (e) => {
+        e.persist()
         if (e.target.valuelength > 1000) {
-            this.setState({
-                inputValue: e.target.value.substring(0, 1000)
-            });
+           this.setState({
+               inputValue: e.target.value.substring(0, 1000)
+           });
         }else{
-            this.setState(state => ({
-                inputValue: e.target.value
-            }));
+           this.setState(state => ({
+               inputValue: e.target.value
+           }));
         }
     }
 
@@ -53,7 +58,7 @@ class ChatInput extends Component {
 
         if(this.state.inputValue.length > 1)
         {
-            socketModule.SendText(this.state.inputValue);
+            //socketModule.SendText(this.state.inputValue);
             this.setState(state => ({
                 inputValue: ''
             }));
@@ -84,17 +89,17 @@ class ChatInput extends Component {
         }
 
         return (
-            <div className="chatInputsWrapper" disabled={chatAble === false ? true : false}>
+            <div className="chatInputsWrapper" disabled={chatAble === false ? false : false}>
                 {descDiv}
                 <span className="col">
                     <label>
-                        <textarea className="chattingTalk" name="chattingTalk" rows="5" cols="80" placeholder={chatDesc} disabled={!navigator.userAgent.match(/msie 9.0/i) && chatAble === false ? true : false}
+                        <textarea className="chattingTalk" name="chattingTalk" rows="5" cols="80" placeholder={chatDesc} disabled={!navigator.userAgent.match(/msie 9.0/i) && chatAble === false ? false : false}
                                 onKeyUp={ this.KeyUp } onChange={ this.KeyCheck } maxLength="1000" value={this.state.inputValue}>                                
                         </textarea>
                     </label>
                 </span>
                 <span className="col submitButtonCol">
-                    <button type="button" className="chatSend" onClick={ this.SendText } disabled={(this.lengthCheck === false || chatAble === false) ? true : false}>
+                    <button type="button" className="chatSend" onClick={ this.SendText } disabled={(this.lengthCheck === false || chatAble === false) ? false : false}>
                         <span>전송</span>
                     </button>
                 </span>
@@ -108,7 +113,11 @@ const mapStateToProps = state => ({
     chatAble: state.payloads.chatAble
 })
 
+const mapDispatchToProps = (dispatch) => ({
+    PushPayload: (payload) => dispatch(pushPayload(payload))
+})
+
 export default connect(
     mapStateToProps,
-    undefined
+    mapDispatchToProps
 )(ChatInput)

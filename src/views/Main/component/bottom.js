@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 
-// import ChatInput from './chatInput/chatInput';
+import ChatInput from './chatInput/chatInput';
 import MenuPanel from './menu/menuPanel';
 
 class Bottom extends PureComponent {
@@ -124,7 +124,7 @@ class Bottom extends PureComponent {
                                 </div>
                             </div>
                         </div>
-                        {/* <ChatInput/> */}
+                        <ChatInput/>
                         <input type="hidden" name="mem_no" value={mem_no} />
                         <input type="hidden" name="room_id" value={roomId}/>
                         <input type="hidden" name="iv" value={iv}/>

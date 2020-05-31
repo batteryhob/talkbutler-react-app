@@ -1,11 +1,24 @@
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 
 import Payload from './payload';
 
-class PayloadList extends PureComponent {
+import $ from 'jquery';
+
+
+class PayloadList extends Component {
+
+    componentDidUpdate(){
+        var $chat = $('#chat');
+        if (!$chat.length) {
+            return;
+        }
+        var $screen = $chat.find('.chatScreen');
+        $screen.scrollTop($screen.prop('scrollHeight'));
+    }
+
     render(){
 
         let { payloadList } = this.props

@@ -13,13 +13,25 @@ import { BrowserRouter } from 'react-router-dom';
 //상태관리
 import reducers from './redux/reducers/index'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import payloadSaga from '../src/redux-saga/saga'
 
 //외부 스크립트
 import './assets/script/butlerChat'
 
 //스토어 생성
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+// mount it on the Store
+const store = createStore(
+  reducers,
+  applyMiddleware(sagaMiddleware),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+// then run the saga
+sagaMiddleware.run(payloadSaga)
 
 ReactDOM.render(
     <BrowserRouter>

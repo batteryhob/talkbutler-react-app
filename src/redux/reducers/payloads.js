@@ -4,7 +4,7 @@
 
 import {
   SET_SYSTEM_MENU,
-  PUSH_PAYLOAD,
+  PUSH_PAYLOAD_SUCCESS,
   UNSHIFT_PAYLOAD,
   CHANGE_PAYLOAD
 } from '../actions/payloadTypes'
@@ -14,7 +14,6 @@ import * as moment from 'moment';
 //더미데이터
 import init from '../../assets/data/init'
 import post from '../../assets/data/post'
-import reservation from '../../assets/data/reservation'
 
 const payLoadState = {
 
@@ -47,67 +46,17 @@ const payloads = (state = payLoadState, action) => {
         systemMenu: init.system_menu
       }
 
-    case PUSH_PAYLOAD:
+    case PUSH_PAYLOAD_SUCCESS:
 
-      //room상태값체크
-      let chatAble = false
-      try {
-        if (action.payload.rooms.state === 'no-zipsa' ||
-          action.payload.rooms.state === 'wait' ||
-          action.payload.rooms.state === 'ing' ||
-          action.payload.rooms.state === 'holding' ||
-          action.payload.rooms.state === 'no-answer' ||
-          action.payload.rooms.state === 'transfer'
-        ) {
-          chatAble = true
-        }
-      } catch (e) {}
-
-      let payloadAdd = [action.payload]
-
-      //날짜객체삽입
-      try {
-
-        if (state.payloadList.length > 1) {
-          let beforestamp = state.payloadList[state.payloadList.length - 1].timestamp;
-          let before = moment(beforestamp)
-          let next = moment(action.payload.timestamp);
-          if (moment.duration(next.diff(before,'days')).asDays() > 1) {
-            const payLoadDate = {
-              message: {
-                type: 'date',
-                body: before.format("YYYY년 MM월 DD일(ddd)")
-              },
-              msg_id: beforestamp,
-              timestamp: beforestamp,
-              writer: {
-                user_tp: 'server'
-              }
-            }
-            payloadAdd.unshift(payLoadDate);
-          }
-          
-          //직전 Payload와 writer비교
-          payloadAdd[payloadAdd.length-1] = {
-            ...payloadAdd[payloadAdd.length-1],
-            same_writer: state.lastUserTp === payloadAdd[payloadAdd.length-1].writer.user_tp ? true : false
-          }
-
-        }
-      } catch (e) {
-        console.log(e)
-      }
-
-      //last메세지상태
-      let lastMsgId = window.client.lastMsgId;
-      let currentUserTp = action.payload.writer.user_tp;
+      let newPayload = [...state.payloadList];
+      newPayload.push(action.payload);
       
       return {
         ...state,
-        payloadList: [...state.payloadList, ...payloadAdd],
-        chatAble: chatAble,
-        lastMsgId: lastMsgId,
-        lastUserTp: currentUserTp
+        payloadList: newPayload,
+        chatAble: true,
+        lastMsgId: "sample",
+        lastUserTp: "sample"
       }
 
     case UNSHIFT_PAYLOAD:  

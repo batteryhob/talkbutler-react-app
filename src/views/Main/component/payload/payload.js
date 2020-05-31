@@ -1,5 +1,5 @@
 
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import classNames from 'classnames'
 
 import Text from './component/text';
@@ -10,7 +10,7 @@ import Image from './component/image';
 import Reservation from './component/reservation';
 import Oa from './component/oa';
 
-class Payload extends PureComponent {
+class Payload extends Component {
 
     get computedSame() {
         try {
